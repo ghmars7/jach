@@ -77,13 +77,21 @@ export default function ImportPage() {
       }
     };
     console.log("filename :" + file.name);
+    const formattedData = students.map((row: any) => ({
+      lastName: row['Nom'] || row['NOM'] || row['nom'],
+      firstName: row['Prenom'] || row['PRENOM'] || row['prenom'] || row['Prénom'],
+      birthDate: row['Date de Naissance'] || row['DATE_NAISSANCE'] || row['date_naissance'],
+      email: `${row['Prenom'] || row['PRENOM'] || row['prenom'] || row['Prénom']}.${row['Nom'] || row['NOM'] || row['nom']}@ecole.fr`.toLowerCase(),
+      parentEmail: `parent.${row['Nom'] || row['NOM'] || row['nom']}@email.com`.toLowerCase(),
+      class: row['Classe'] || row['CLASSE'] || row['classe'] || '6ème A'
+    }));
 
     const response = await fetch('/api/students/import', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(students),
+      body: JSON.stringify(formattedData),
     });
 
     if (!response.ok) {
