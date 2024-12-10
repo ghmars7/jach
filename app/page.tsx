@@ -16,22 +16,14 @@ export default function Home() {
             <GraduationCap className="h-12 w-12 text-primary" />
           </div>
           <h1 className="text-3xl font-bold">EduManager Pro</h1>
-          <p className="text-muted-foreground">
-            Système de gestion scolaire pour les professionnels de l'éducation
-          </p>
+          <p className="text-muted-foreground">Système de gestion scolaire pour les professionnels de l éducation</p>
         </div>
-        
+
         <div className="space-y-4">
-          <Button 
-            className="w-full" 
-            size="lg"
-            onClick={() => router.push("/auth/login")}
-          >
+          <Button className="w-full" size="lg" onClick={() => router.push("/auth/login")}>
             Connexion
           </Button>
-          <p className="text-sm text-center text-muted-foreground">
-            Plateforme réservée au personnel autorisé
-          </p>
+          <p className="text-sm text-center text-muted-foreground">Plateforme réservée au personnel autorisé</p>
         </div>
       </Card>
     </div>

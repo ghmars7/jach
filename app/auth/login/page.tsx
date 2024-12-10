@@ -32,6 +32,7 @@ export default function LoginPage() {
         throw new Error("Identifiants invalides");
       }
     } catch (error) {
+      console.log(error);
       toast({
         variant: "destructive",
         title: "Erreur de connexion",
@@ -47,9 +48,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md p-8 space-y-6">
         <div className="space-y-2 text-center">
           <h1 className="text-2xl font-bold">Connexion</h1>
-          <p className="text-muted-foreground">
-            Connectez-vous à votre compte EduManager
-          </p>
+          <p className="text-muted-foreground">Connectez-vous à votre compte EduManager</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -84,12 +83,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full" 
-            size="lg"
-            disabled={isLoading}
-          >
+          <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
             {isLoading ? "Connexion..." : "Se connecter"}
           </Button>
         </form>

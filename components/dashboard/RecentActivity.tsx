@@ -31,17 +31,12 @@ export default function RecentActivity() {
       </div>
       <div className="mt-4 space-y-4">
         {activities.map((activity) => (
-          <div
-            key={activity.id}
-            className="flex items-center justify-between border-b pb-4 last:border-0"
-          >
+          <div key={activity.id} className="flex items-center justify-between border-b pb-4 last:border-0">
             <div>
               <p className="font-medium">{activity.description}</p>
               <p className="text-sm text-muted-foreground">Par {activity.user}</p>
             </div>
-            <span className="text-sm text-muted-foreground">
-              {activity.time}
-            </span>
+            <span className="text-sm text-muted-foreground">{activity.time}</span>
           </div>
         ))}
       </div>
