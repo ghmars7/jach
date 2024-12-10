@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
 
 // Définir un type pour formData
 interface FormData {
@@ -39,6 +40,8 @@ export default function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const { setAuth } = useAuth();
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,6 +65,7 @@ export default function RegisterForm() {
       // Stocker le token
       setCookie("token", data.token, 1); // Cookie expire dans 1 jour
       setCookie("user", JSON.stringify(data.user), 1);
+      setAuth(data.user, data.token);
 
       toast({
         title: "Inscription réussie",
