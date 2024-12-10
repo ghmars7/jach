@@ -83,7 +83,7 @@ export default function ImportPage() {
       birthDate: row['Date de Naissance'] || row['DATE_NAISSANCE'] || row['date_naissance'],
       email: `${row['Prenom'] || row['PRENOM'] || row['prenom'] || row['Prénom']}.${row['Nom'] || row['NOM'] || row['nom']}@ecole.fr`.toLowerCase(),
       parentEmail: `parent.${row['Nom'] || row['NOM'] || row['nom']}@email.com`.toLowerCase(),
-      class: row['Classe'] || row['CLASSE'] || row['classe'] || '6ème A'
+      class: row['Classe'] || row['CLASSE'] || row['classe'] || null
     }));
 
     const response = await fetch('/api/students/import', {
