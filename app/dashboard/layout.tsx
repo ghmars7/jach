@@ -55,6 +55,12 @@ const sidebarItems: SidebarItem[] = [
     roles: ['admin', 'teacher']
   },
   { 
+    icon: ClipboardList, 
+    label: "Import", 
+    href: "/dashboard/import",
+    roles: ['admin', 'teacher']
+  },
+  { 
     icon: Settings, 
     label: "Paramètres", 
     href: "/dashboard/settings",
