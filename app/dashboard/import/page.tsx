@@ -14,6 +14,17 @@ export interface FileData extends Student {
   teacherName?: string; // Nom du professeur (par exemple, "Dufour Zoé")
 }
 
+const formatLevel = (level: string): string => {
+  if (level.includes("1ère section maternelle")) {
+    return "Petite Section";
+  } else if (level.includes("2ème section maternelle")) {
+    return "Moyenne Section";
+  } else if (level.includes("3ème section maternelle")) {
+    return "Grande Section";
+  }
+  return level; // Si aucun remplacement n'est trouvé, retourner la valeur telle quelle
+}
+
 export default function ImportPage() {
   const [students, setStudents] = useState<Student[]>([]);
   const [file, setFile] = useState<File | null>(null); // Track the selected file
@@ -36,7 +47,7 @@ export default function ImportPage() {
         const firstName = row["Prénom Élève"] || row["prenom"] || row["Prénom"] || "Inconnu";
         const lastName = row["Nom Élève"] || row["nom"] || "Inconnu";
         const birthDate = row["Date de Naissance"] || row["date_naissance"] || "01/01/1970";
-        const level = row["Niveau"] || "Non spécifié";
+        const level = formatLevel(row["Niveau"] || "Non spécifié");
         const teacherName = row["Nom Professeur"] || "Non spécifié";
   
         // Génération de l'email

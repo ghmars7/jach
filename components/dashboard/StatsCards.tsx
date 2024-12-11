@@ -1,6 +1,11 @@
+import { useStudents } from "@/hooks/useStudents";
+
+
 export default function StatsCards() {
+  const { students, isLoading, mutate } = useStudents();
+
   const stats = [
-    { name: "Total Élèves", value: "486" },
+    { name: "Total Élèves", value: students.length },
     { name: "Classes", value: "24" },
     { name: "Professeurs", value: "32" },
     { name: "Moyenne Générale", value: "14.8" },
